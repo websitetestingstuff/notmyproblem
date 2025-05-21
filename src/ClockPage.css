@@ -1,0 +1,16 @@
+.clock-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh; /* Adjust as needed, 50% of viewport height */
+  padding: 2rem;
+}
+
+.clock-display {
+  font-size: 5rem; /* Large font size for the clock */
+  color: #ffffff; /* White color for visibility on dark theme */
+  background-color: #1e1e1e; /* Slightly different background for the clock display */
+  padding: 2rem 4rem;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}

@@ -6,7 +6,7 @@ function Footer() {
     <footer className="footer">
       <p>&copy; {new Date().getFullYear()} NotMyProblem. All rights reserved.</p>
       <p>
-        <a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a>
+        <a href="#privacy">Privacy Policy</a>
       </p>
     </footer>
   );
