@@ -82,24 +82,31 @@ md-outlined-select {
   --md-outlined-field-label-text-font: inherit;
   --md-outlined-field-input-text-font: inherit;
   --md-select-option-label-text-font: inherit;
+
+  /* Explicitly theme the menu using its custom property for background */
+  --md-menu-container-color: rgba(20, 20, 20, 0.75); /* Dark, semi-transparent for the menu background */
 }
 
 /* Styling the dropdown menu (panel) for backdrop filter and font */
-md-outlined-select::part(menu) { /* This is a common part name for menus in MWC */
-  background-color: rgba(20, 20, 20, 0.65); /* Semi-transparent dark background for the blur effect */
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px); /* Safari support */
-  /* font-family should be inherited */
+/* Apply backdrop-filter directly to the menu part. */
+md-outlined-select::part(menu) { 
+  backdrop-filter: blur(8px); /* Slightly stronger blur */
+  -webkit-backdrop-filter: blur(8px); /* Safari support */
+  /* The background color is now set by --md-menu-container-color on the host md-outlined-select */
+  /* Ensure default component styles don't add another opaque background here */
 }
 
 /* Styling for individual options in the dropdown */
 md-select-option {
-  --md-menu-item-label-text-color: white; /* Text color for options */
-  --md-menu-item-container-color: transparent; /* Ensure option background is transparent to see menu's blur */
+  --md-menu-item-label-text-color: #f0f0f0; /* Light gray text for options for better readability */
+  /* Ensure option background is transparent so the menu's blurred background is visible */
+  --md-menu-item-container-color: transparent; 
   /* font-family should be inherited */
 }
 
+/* Hover and selected states for options */
 md-select-option:hover {
+  /* MWC might use state layers; ensure this doesn't make it opaque */
   --md-menu-item-hover-state-layer-color: rgba(255, 255, 255, 0.1); /* Subtle hover effect */
 }
 
