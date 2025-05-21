@@ -1,0 +1,75 @@
+/* Basic reset and global styles (optional but good practice) */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f4f4f4; /* Example background for the page */
+  color: #333;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure app takes full viewport height */
+  text-align: center; /* Keep text-align if desired, or remove if components handle it */
+}
+
+.main-content {
+  flex-grow: 1; /* Allows this area to expand and push footer down */
+  padding-top: 80px; /* Adjust based on Navbar's actual height. Navbar height is approx 60px (1rem padding + 1.5rem font-size) + border. Add some buffer. */
+  padding-bottom: 80px; /* Adjust based on Footer's actual height. Footer height is approx 60px. Add some buffer. */
+  padding-left: 2rem; /* Match Navbar/Footer horizontal padding */
+  padding-right: 2rem; /* Match Navbar/Footer horizontal padding */
+  background-color: #fff; /* Example background for content area */
+  box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Optional: add some depth */
+  margin: 0 auto; /* Center content if it's not full-width by design */
+  max-width: 1200px; /* Optional: constrain content width */
+  text-align: left; /* Align text to the left for typical content readability */
+}
+
+.main-content h1 {
+  color: #333;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 0.5rem;
+}
+
+.main-content p {
+  color: #555;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* Remove or adjust default React boilerplate styles if no longer needed */
+/* For example, .App-logo, .App-header, .App-link might not be used anymore */
+
+/* Keep .App-logo animation if you plan to use a logo somewhere, otherwise remove */
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

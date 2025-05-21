@@ -1,0 +1,113 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem; /* Content padding */
+  background-color: rgba(255, 255, 255, 0.15); /* Slightly adjusted alpha for better blur visibility */
+  backdrop-filter: blur(12px); /* Slightly increased blur */
+  -webkit-backdrop-filter: blur(12px); /* For Safari */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15); /* Softer border */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; /* Full width */
+  box-sizing: border-box; /* Ensures padding is included in the width/height */
+  z-index: 1000; /* Same as footer, or higher if navbar should overlap footer (not typical) */
+}
+
+.navbar-logo {
+  font-size: 1.6rem; /* Slightly larger logo text */
+  font-weight: bold;
+  color: #ffffff;
+  text-shadow: 0 0 5px rgba(0,0,0,0.5); /* Text shadow for better readability */
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  align-items: center; /* Vertically align items if they have different heights */
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links li {
+  margin-left: 25px; /* Slightly increased spacing */
+}
+
+.navbar-links li a,
+.dropdown-toggle { /* Apply similar styling to dropdown toggle for consistency */
+  text-decoration: none;
+  color: #ffffff;
+  text-shadow: 0 0 3px rgba(0,0,0,0.4); /* Text shadow for better readability */
+  padding: 0.6rem 1.1rem; /* Slightly increased padding */
+  border-radius: 5px; /* Slightly more rounded corners */
+  transition: background-color 0.2s ease, color 0.2s ease;
+  font-size: 1rem;
+}
+
+.navbar-links li a:hover,
+.navbar-links li a:focus,
+.dropdown-toggle:hover,
+.dropdown-toggle:focus {
+  background-color: rgba(255, 255, 255, 0.25);
+  color: #fff;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit; /* Ensure font consistency */
+  /* Styling moved to .navbar-links li a, .dropdown-toggle block */
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 10px); /* Position below the toggle button with a small gap */
+  left: 50%; /* Start from center of the toggle */
+  transform: translateX(-50%); /* Center align the dropdown */
+  background-color: rgba(230, 230, 230, 0.2); /* Slightly different background for dropdown */
+  backdrop-filter: blur(15px); /* Stronger blur for dropdown */
+  -webkit-backdrop-filter: blur(15px); /* For Safari */
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 6px; /* More rounded corners for dropdown */
+  list-style: none;
+  padding: 0.6rem 0; /* Adjusted padding */
+  margin: 0; /* Remove default margin */
+  min-width: 180px; /* Slightly wider dropdown */
+  z-index: 1001; /* Ensure dropdown is above other navbar elements */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow for depth */
+  opacity: 0; /* Start hidden for animation */
+  visibility: hidden; /* Start hidden for animation */
+  transition: opacity 0.3s ease, visibility 0.3s ease, top 0.3s ease;
+}
+
+/* Show dropdown menu when parent has a class or state indicating it's open */
+/* This will be controlled by JavaScript by adding/removing a class or through state */
+.dropdown:hover .dropdown-menu, /* Example: show on hover, or use JS state */
+.dropdown .dropdown-menu.open { /* Class 'open' to be toggled by JS */
+  opacity: 1;
+  visibility: visible;
+  top: calc(100% + 5px); /* Final position */
+}
+
+
+.dropdown-menu li a {
+  display: block;
+  padding: 0.7rem 1.2rem; /* Increased padding for dropdown items */
+  text-decoration: none;
+  color: #f0f0f0; /* Slightly off-white for dropdown links */
+  text-shadow: 0 0 2px rgba(0,0,0,0.3);
+  white-space: nowrap; /* Prevent text wrapping */
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.dropdown-menu li a:hover,
+.dropdown-menu li a:focus {
+  background-color: rgba(255, 255, 255, 0.35);
+  color: #fff;
+}

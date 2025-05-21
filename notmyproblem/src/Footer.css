@@ -1,0 +1,32 @@
+.footer {
+  background-color: rgba(0, 0, 0, 0.7); /* Slightly more transparent for a fixed element */
+  color: #fff;
+  text-align: center;
+  padding: 1rem 2rem; /* Adjusted padding for fixed positioning, content alignment */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%; /* Full width */
+  box-sizing: border-box; /* Ensures padding is included in the width/height */
+  backdrop-filter: blur(10px); /* Enhanced blur for fixed element */
+  -webkit-backdrop-filter: blur(10px); /* For Safari */
+  border-top: 1px solid rgba(255, 255, 255, 0.15); /* Slightly softer border */
+  z-index: 1000; /* Ensure it's above most content, but below modals etc. if any */
+}
+
+.footer p {
+  margin: 0.25rem 0; /* Reduced margin for a more compact fixed footer */
+  font-size: 0.85rem; /* Slightly smaller font for fixed footer */
+}
+
+.footer a {
+  color: #ccc; /* Lighter color for links to stand out on dark background */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer a:hover,
+.footer a:focus {
+  color: #fff; /* Brighter on hover/focus */
+  text-decoration: underline;
+}
