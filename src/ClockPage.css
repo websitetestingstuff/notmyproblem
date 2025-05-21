@@ -1,9 +1,11 @@
 .clock-container {
   display: flex;
+  flex-direction: column; /* Changed to column to allow controls below clock */
   justify-content: center;
   align-items: center;
-  height: 50vh; /* Adjust as needed, 50% of viewport height */
+  min-height: 80vh; /* Ensure it takes good portion of viewport height */
   padding: 2rem;
+  /* font-family will be inherited from body */
 }
 
 .clock-display {
@@ -21,14 +23,16 @@
   flex-direction: column; /* Stack slider and select vertically */
   align-items: center; /* Center them horizontally */
   margin-top: 2rem;
-  gap: 1.5rem; /* Space between the slider container and select container */
+  gap: 1.5rem; /* Space between the switch container and select container */
 }
 
-.format-slider-container,
+.format-switch-container, /* Renamed from .format-slider-container */
 .timezone-select-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  /* Align items (label and switch/select) in a row for switch, column for select */
+  /* Overridden for format-switch-container below to be row */
+  flex-direction: column; 
+  align-items: center; /* Center items for column layout */
   padding: 1rem;
   background-color: #2a2a2a;
   border-radius: 8px;
@@ -37,29 +41,76 @@
   max-width: 400px; /* But not too wide */
 }
 
-.format-slider-container label,
-.timezone-select-container md-outlined-select::part(label) /* MWC uses parts for some internal styling */ {
-  margin-bottom: 0.75rem;
-  color: #e0e0e0;
-  font-size: 1rem;
+.format-switch-container {
+  flex-direction: row; /* Label and switch in a row */
+  justify-content: space-between; /* Puts label on left, switch on right */
+  align-items: center; /* Vertically align label and switch */
 }
 
-/* Styling for md-slider */
-md-slider {
-  min-width: 150px;
-  width: 80%; /* Slider takes more width of its container */
-  max-width: 300px; 
-  /* MWC components use CSS custom properties for theming.
-     Example: --md-slider-handle-color: #your-color;
-     Refer to MWC documentation for available theming properties if default M3 is not sufficient.
+.format-switch-container label {
+  /* No margin-bottom needed as it's side-by-side */
+  color: #e0e0e0;
+  font-size: 1rem;
+  margin-right: 1rem; /* Add some space between label and switch */
+}
+
+/* Remove md-slider specific styles */
+
+/* Styling for md-switch (if needed, MWC components are often themeable via CSS custom properties) */
+md-switch {
+  /* Example: Change colors if default M3 doesn't fit
+  --md-switch-selected-track-color: #61dafb;
+  --md-switch-selected-handle-color: white;
+  --md-switch-unselected-track-color: #555;
+  --md-switch-unselected-handle-color: #ccc;
   */
+  /* The component should size itself appropriately. */
 }
 
 /* Styling for md-outlined-select */
 md-outlined-select {
   width: 100%; /* Make select take full width of its container */
-  /* MWC theming example:
-     --md-outlined-select-container-shape: 8px;
-     --md-sys-color-primary: #your-brand-color; 
-  */
+  /* Background color, text color, and font for the select field itself */
+  --md-sys-color-surface: black; /* Background of the component */
+  --md-sys-color-on-surface: white; /* Text color on the component */
+  --md-outlined-field-label-text-color: #e0e0e0; /* Label text color */
+  --md-outlined-field-input-text-color: white; /* Input text color */
+  
+  /* Font for various parts of the select */
+  /* Use inherit or unset if MWC components correctly inherit the body font. */
+  /* If not, explicitly set to 'inherit' or a specific font variable if created. */
+  --md-outlined-field-label-text-font: inherit;
+  --md-outlined-field-input-text-font: inherit;
+  --md-select-option-label-text-font: inherit;
+
+  /* Explicitly theme the menu using its custom property for background */
+  --md-menu-container-color: rgba(20, 20, 20, 0.75); /* Dark, semi-transparent for the menu background */
+}
+
+/* Styling the dropdown menu (panel) for backdrop filter and font */
+/* Apply backdrop-filter directly to the menu part. */
+md-outlined-select::part(menu) { 
+  backdrop-filter: blur(8px); /* Slightly stronger blur */
+  -webkit-backdrop-filter: blur(8px); /* Safari support */
+  /* The background color is now set by --md-menu-container-color on the host md-outlined-select */
+  /* Ensure default component styles don't add another opaque background here */
+}
+
+/* Styling for individual options in the dropdown */
+md-select-option {
+  --md-menu-item-label-text-color: #f0f0f0; /* Light gray text for options for better readability */
+  /* Ensure option background is transparent so the menu's blurred background is visible */
+  --md-menu-item-container-color: transparent; 
+  /* font-family should be inherited */
+}
+
+/* Hover and selected states for options */
+md-select-option:hover {
+  /* MWC might use state layers; ensure this doesn't make it opaque */
+  --md-menu-item-hover-state-layer-color: rgba(255, 255, 255, 0.1); /* Subtle hover effect */
+}
+
+md-select-option[selected] {
+  --md-menu-item-selected-label-text-color: #61dafb; /* Highlight color for selected option text */
+  --md-menu-item-selected-container-color: rgba(97, 218, 251, 0.1); /* Subtle background for selected */
 }

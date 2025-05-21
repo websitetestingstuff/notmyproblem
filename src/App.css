@@ -52,25 +52,7 @@ code {
 }
 
 /* Remove or adjust default React boilerplate styles if no longer needed */
-/* For example, .App-logo, .App-header, .App-link might not be used anymore */
+/* For example, .App-header, .App-link might not be used anymore */
 
-/* Keep .App-logo animation if you plan to use a logo somewhere, otherwise remove */
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+/* The .App-logo and its animation are not used in this application. */
+/* Removed .App-logo and @keyframes App-logo-spin */

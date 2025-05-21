@@ -5,6 +5,8 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import ClockPage from './ClockPage';
 import CalculatorPage from './CalculatorPage'; // Import CalculatorPage
+import StopwatchPage from './StopwatchPage'; // Import StopwatchPage
+import TypeTestPage from './TypeTestPage'; // Import TypeTestPage
 
 // Define HomePage component
 function HomePage() {
@@ -30,6 +32,8 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/clock" element={<ClockPage />} />
             <Route path="/calculator" element={<CalculatorPage />} /> {/* Add CalculatorPage route */}
+            <Route path="/stopwatch" element={<StopwatchPage />} /> {/* Add StopwatchPage route */}
+            <Route path="/typetest" element={<TypeTestPage />} /> {/* Add TypeTestPage route */}
           </Routes>
         </main>
         <Footer />
