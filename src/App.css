@@ -6,8 +6,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f4f4f4; /* Example background for the page */
-  color: #333;
+  background-color: black; /* Example background for the page */
+  color: white;
 }
 
 code {
@@ -28,23 +28,23 @@ code {
   padding-bottom: 80px; /* Adjust based on Footer's actual height. Footer height is approx 60px. Add some buffer. */
   padding-left: 2rem; /* Match Navbar/Footer horizontal padding */
   padding-right: 2rem; /* Match Navbar/Footer horizontal padding */
-  background-color: #fff; /* Example background for content area */
-  box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Optional: add some depth */
+  background-color: #121212; /* Example background for content area */
+  box-shadow: 0 0 10px rgba(255,255,255,0.1); /* Optional: add some depth */
   margin: 0 auto; /* Center content if it's not full-width by design */
-  max-width: 1200px; /* Optional: constrain content width */
+  max-width: 95%; /* Optional: constrain content width */
   text-align: left; /* Align text to the left for typical content readability */
 }
 
 .main-content h1 {
-  color: #333;
+  color: white;
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  border-bottom: 2px solid #eee;
+  border-bottom: 2px solid #444;
   padding-bottom: 0.5rem;
 }
 
 .main-content p {
-  color: #555;
+  color: #ccc;
   font-size: 1.1rem;
   line-height: 1.6;
   margin-bottom: 1rem;

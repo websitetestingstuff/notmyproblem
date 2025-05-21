@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 function Navbar() {
@@ -12,8 +13,9 @@ function Navbar() {
     <nav className="navbar">
       <div className="navbar-logo">websiet</div>
       <ul className="navbar-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#services">Services</a></li>
+        <li><Link to="/">Home</Link></li>
+        {/* The "Services" li is removed by not including it here */}
+        <li><Link to="/clock">Clock</Link></li>
         <li className="dropdown">
           <button onClick={toggleDropdown} className="dropdown-toggle" aria-expanded={isDropdownOpen} aria-haspopup="true">
             More
