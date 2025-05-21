@@ -4,9 +4,9 @@ import './Footer.css';
 function Footer() {
   return (
     <footer className="footer">
-      <p>&copy; {new Date().getFullYear()} NotMyProblem. All rights reserved.</p>
+      <p>this is AN footer</p>
       <p>
-        <a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a>
+        <a href="#privacy"></a>
       </p>
     </footer>
   );
