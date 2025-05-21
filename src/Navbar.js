@@ -10,7 +10,7 @@ function Navbar() {
 
   return (
     <nav className="navbar">
-      <div className="navbar-logo">NotMyProblem</div>
+      <div className="navbar-logo">websiet</div>
       <ul className="navbar-links">
         <li><a href="#home">Home</a></li>
         <li><a href="#services">Services</a></li>
