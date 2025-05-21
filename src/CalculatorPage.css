@@ -1,0 +1,87 @@
+.calculator-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  /* Styles will be added to make it look like a calculator */
+}
+
+.calculator-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  max-width: 400px; /* Adjust as needed */
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #2c2c2c; /* Darker background for the calculator body */
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+
+.calculator-display {
+  grid-column: 1 / -1; /* Span all columns */
+  background-color: #1e1e1e; /* Very dark for display background */
+  color: white;
+  font-size: 2.5rem;
+  padding: 15px 20px;
+  text-align: right;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  min-height: 60px; /* Ensure a minimum height */
+  word-wrap: break-word; /* Break long numbers */
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.3);
+}
+
+.calculator-button {
+  background-color: #4f4f4f; /* Medium dark for buttons */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 20px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.calculator-button:hover {
+  background-color: #6a6a6a; /* Lighter on hover */
+}
+
+.calculator-button:active {
+  background-color: #7a7a7a;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.calculator-button.operator {
+  background-color: #ff9500; /* Orange for operators */
+  color: white;
+}
+
+.calculator-button.operator:hover {
+  background-color: #ffad33;
+}
+
+.calculator-button.operator:active {
+  background-color: #cc7a00;
+}
+
+.calculator-button.equals {
+  background-color: #ff9500; /* Orange for equals too, or a different highlight color */
+  grid-column: span 2; /* Make equals button wider */
+}
+
+.calculator-button.equals:hover {
+  background-color: #ffad33;
+}
+
+.calculator-button.clear {
+  background-color: #d4d4d2; /* Lighter gray for C/AC */
+  color: black;
+}
+.calculator-button.clear:hover {
+  background-color: #e0e0e0;
+}
+.calculator-button.zero {
+  grid-column: span 2; /* Make 0 button wider */
+}

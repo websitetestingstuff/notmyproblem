@@ -4,6 +4,7 @@ import './App.css';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import ClockPage from './ClockPage';
+import CalculatorPage from './CalculatorPage'; // Import CalculatorPage
 
 // Define HomePage component
 function HomePage() {
@@ -28,6 +29,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/clock" element={<ClockPage />} />
+            <Route path="/calculator" element={<CalculatorPage />} /> {/* Add CalculatorPage route */}
           </Routes>
         </main>
         <Footer />

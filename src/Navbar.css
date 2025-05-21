@@ -3,10 +3,10 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem; /* Content padding */
-  background-color: rgba(255, 255, 255, 0.15); /* Slightly adjusted alpha for better blur visibility */
-  backdrop-filter: blur(12px); /* Slightly increased blur */
-  -webkit-backdrop-filter: blur(12px); /* For Safari */
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15); /* Softer border */
+  background-color: rgba(0, 0, 0, 0.7); /* Match footer's background color */
+  backdrop-filter: blur(10px); /* Match footer's blur radius */
+  -webkit-backdrop-filter: blur(10px); /* For Safari - Match footer's blur radius */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15); /* Softer border - this can remain or be adjusted if needed */
   position: fixed;
   top: 0;
   left: 0;
@@ -84,6 +84,12 @@
   opacity: 0; /* Start hidden for animation */
   visibility: hidden; /* Start hidden for animation */
   transition: opacity 0.3s ease, visibility 0.3s ease, top 0.3s ease;
+}
+
+.dropdown-menu.dropdown-menu-align-right {
+  left: auto; /* Override the 50% */
+  right: 0; /* Align to the right of the parent .dropdown */
+  transform: none; /* Reset the translateX */
 }
 
 /* Show dropdown menu when parent has a class or state indicating it's open */

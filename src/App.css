@@ -32,6 +32,7 @@ code {
   box-shadow: 0 0 10px rgba(255,255,255,0.1); /* Optional: add some depth */
   margin: 0 auto; /* Center content if it's not full-width by design */
   max-width: 95%; /* Optional: constrain content width */
+  min-width: 60%; /* Ensure content area takes at least 60% of page width */
   text-align: left; /* Align text to the left for typical content readability */
 }
 

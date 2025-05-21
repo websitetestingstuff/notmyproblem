@@ -13,4 +13,53 @@
   padding: 2rem 4rem;
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  text-align: center; /* Ensure text itself is centered within the display box */
+}
+
+.controls-container {
+  display: flex;
+  flex-direction: column; /* Stack slider and select vertically */
+  align-items: center; /* Center them horizontally */
+  margin-top: 2rem;
+  gap: 1.5rem; /* Space between the slider container and select container */
+}
+
+.format-slider-container,
+.timezone-select-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  background-color: #2a2a2a;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(255,255,255,0.05);
+  width: 90%; /* Make control groups take more width */
+  max-width: 400px; /* But not too wide */
+}
+
+.format-slider-container label,
+.timezone-select-container md-outlined-select::part(label) /* MWC uses parts for some internal styling */ {
+  margin-bottom: 0.75rem;
+  color: #e0e0e0;
+  font-size: 1rem;
+}
+
+/* Styling for md-slider */
+md-slider {
+  min-width: 150px;
+  width: 80%; /* Slider takes more width of its container */
+  max-width: 300px; 
+  /* MWC components use CSS custom properties for theming.
+     Example: --md-slider-handle-color: #your-color;
+     Refer to MWC documentation for available theming properties if default M3 is not sufficient.
+  */
+}
+
+/* Styling for md-outlined-select */
+md-outlined-select {
+  width: 100%; /* Make select take full width of its container */
+  /* MWC theming example:
+     --md-outlined-select-container-shape: 8px;
+     --md-sys-color-primary: #your-brand-color; 
+  */
 }
