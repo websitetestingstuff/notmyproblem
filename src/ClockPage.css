@@ -89,11 +89,16 @@ md-outlined-select {
 
 /* Styling the dropdown menu (panel) for backdrop filter and font */
 /* Apply backdrop-filter directly to the menu part. */
-md-outlined-select::part(menu) { 
-  backdrop-filter: blur(8px); /* Slightly stronger blur */
-  -webkit-backdrop-filter: blur(8px); /* Safari support */
-  /* The background color is now set by --md-menu-container-color on the host md-outlined-select */
-  /* Ensure default component styles don't add another opaque background here */
+md-outlined-select::part(menu) {
+  /* Explicitly make this part's own direct background transparent */
+  background-color: transparent;
+
+  /* The backdrop-filter should apply to this element, which now has a transparent background.
+     The visible background should come from --md-menu-container-color set on the host. */
+  -webkit-backdrop-filter: blur(8px); /* Slightly stronger blur */
+  backdrop-filter: blur(8px); /* Safari support */
+  
+  /* font-family should be inherited */
 }
 
 /* Styling for individual options in the dropdown */
