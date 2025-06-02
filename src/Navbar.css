@@ -22,6 +22,14 @@
   text-shadow: 0 0 5px rgba(0,0,0,0.5); /* Text shadow for better readability */
 }
 
+/* Ensure the Link component within navbar-logo inherits styles and has no underline */
+.navbar-logo a {
+  color: inherit; /* Inherits #ffffff from .navbar-logo */
+  text-decoration: none; /* Removes underline */
+  font-size: inherit; /* Explicitly inherit font size */
+  font-weight: inherit; /* Explicitly inherit font weight */
+}
+
 .navbar-links {
   list-style: none;
   display: flex;
