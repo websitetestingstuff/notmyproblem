@@ -22,6 +22,25 @@
   text-shadow: 0 0 5px rgba(0,0,0,0.5); /* Text shadow for better readability */
 }
 
+.hamburger-menu {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem; /* Provides a slightly larger tap target */
+  z-index: 1005; /* Ensure it's above navbar-links if they had a background or were laid out unexpectedly */
+  /* position: relative; Not needed unless specific stacking context issues arise */
+}
+
+.hamburger-menu span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 5px 0;
+  transition: all 0.3s ease-in-out;
+}
+
 /* Ensure the Link component within navbar-logo inherits styles and has no underline */
 .navbar-logo a {
   color: inherit; /* Inherits #ffffff from .navbar-logo */
@@ -124,4 +143,120 @@
 .dropdown-menu li a:focus {
   background-color: rgba(255, 255, 255, 0.35);
   color: #fff;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    /* Navbar itself usually remains the same, but content alignment might change if needed */
+    /* For example, if you wanted logo and hamburger on different lines:
+    flex-wrap: wrap;
+    */
+  }
+
+  .navbar-links {
+    display: none; /* Hidden by default on mobile */
+    flex-direction: column;
+    position: absolute;
+    top: 100%; /* Place it right below the navbar (assuming navbar is position:fixed or relative) */
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.95); /* Darker, more opaque background for mobile menu */
+    padding: 0; /* Remove horizontal padding, items will control their own */
+    margin:0; /* Ensure no default margin */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 1000; /* Below navbar's z-index if navbar is higher, but above main content */
+  }
+
+  .navbar-links.mobile-menu-open {
+    display: flex; /* Show when mobile menu is active */
+  }
+
+  .navbar-links li {
+    margin-left: 0; /* Reset desktop margin */
+    width: 100%; /* Make list items take full width */
+    text-align: center; /* Center text within list items */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Separator line between menu items */
+  }
+
+  .navbar-links li:last-child { /* The dropdown container li */
+    border-bottom: none; /* No border for the last item */
+  }
+
+  .navbar-links li a,
+  .dropdown-toggle { /* Apply to both regular links and the dropdown toggle button */
+    padding: 1rem; /* Generous padding for easy tapping */
+    display: block; /* Make the entire area clickable */
+    width: 100%;
+    box-sizing: border-box; /* Include padding in width */
+    border-radius: 0; /* Remove desktop border-radius */
+    text-align: center; /* Explicitly center text if not inherited */
+    /* transition: none; Optionally remove desktop transition for faster mobile feel */
+  }
+
+  /* Hover/focus styles remain largely the same, but ensure they apply correctly */
+  .navbar-links li a:hover,
+  .navbar-links li a:focus,
+  .dropdown-toggle:hover,
+  .dropdown-toggle:focus {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  .hamburger-menu {
+    display: block; /* Show hamburger button on mobile */
+  }
+
+  /* Animated hamburger icon (X shape when menu is open) */
+  .hamburger-menu[aria-expanded="true"] span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .hamburger-menu[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger-menu[aria-expanded="true"] span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  /* Mobile Dropdown Styling Adjustments */
+  .dropdown { /* This is the <li> element containing the dropdown */
+    width: 100%; /* Ensure it spans full width */
+  }
+
+  .dropdown-toggle {
+    /* Styles already covered by .navbar-links li a, .dropdown-toggle */
+    /* If the "More" button needs specific styling different from other links:
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* If it's not the last item and has sub-items below
+    */
+  }
+
+  .dropdown-menu {
+    position: static; /* Crucial: make it flow within the mobile menu */
+    display: none; /* Hidden by default, shown by .open class */
+    transform: none; /* Reset desktop transform */
+    width: 100%; /* Span full width */
+    box-shadow: none; /* Remove desktop shadow */
+    border: none; /* Remove desktop border */
+    border-radius: 0; /* Remove desktop border-radius */
+    background-color: rgba(10, 10, 10, 0.3); /* Slightly different background for sub-menu items for visual distinction */
+    opacity: 1; /* Reset desktop opacity (controlled by display now) */
+    visibility: visible; /* Reset desktop visibility */
+    transition: none; /* No transition for mobile dropdown display */
+    padding: 0; /* Reset padding */
+    margin:0; /* Reset margin */
+    /* No backdrop-filter needed here if it's just a section of the main mobile menu */
+  }
+
+  .dropdown-menu.open {
+     display: block; /* Show the sub-menu items */
+  }
+
+  .dropdown-menu li a {
+    padding: 1rem; /* Consistent padding */
+    color: #dddddd; /* Slightly adjusted color for sub-menu items if needed */
+    text-align: center; /* Center sub-menu item text */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Fainter separator for sub-items */
+  }
+
+  .dropdown-menu li:last-child a {
+    border-bottom: none; /* No border for the last sub-item */
+  }
 }

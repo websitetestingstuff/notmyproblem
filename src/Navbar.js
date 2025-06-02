@@ -4,12 +4,32 @@ import './Navbar.css';
 
 function Navbar() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // State for mobile menu
   const dropdownRef = useRef(null); // Ref for the li.dropdown
   const dropdownMenuRef = useRef(null); // Ref for the ul.dropdown-menu
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+    // Close the "More" dropdown if it's open when the mobile menu is toggled
+    if (isDropdownOpen) {
+      setIsDropdownOpen(false);
+    }
+  };
+
+  // Close mobile menu if window is resized to desktop
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768 && isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [isMobileMenuOpen]);
 
   useEffect(() => {
     const menuElement = dropdownMenuRef.current;
@@ -58,20 +78,28 @@ function Navbar() {
       <div className="navbar-logo">
         <Link to="/">websiet</Link>
       </div>
-      <ul className="navbar-links">
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/clock">Clock</Link></li>
-        <li><Link to="/calculator">Calculator</Link></li>
-        <li><Link to="/stopwatch">Stopwatch</Link></li> {/* Add Stopwatch link */}
-        <li><Link to="/typetest">Type Test</Link></li> {/* Add TypeTest link */}
-        <li className="dropdown" ref={dropdownRef}> {/* Attach ref to li.dropdown */}
+
+      <button className="hamburger-menu" onClick={toggleMobileMenu} aria-expanded={isMobileMenuOpen} aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul className={`navbar-links ${isMobileMenuOpen ? 'mobile-menu-open' : ''}`}>
+        <li><Link to="/" onClick={isMobileMenuOpen ? toggleMobileMenu : undefined}>Home</Link></li>
+        <li><Link to="/clock" onClick={isMobileMenuOpen ? toggleMobileMenu : undefined}>Clock</Link></li>
+        <li><Link to="/calculator" onClick={isMobileMenuOpen ? toggleMobileMenu : undefined}>Calculator</Link></li>
+        <li><Link to="/stopwatch" onClick={isMobileMenuOpen ? toggleMobileMenu : undefined}>Stopwatch</Link></li>
+        <li><Link to="/typetest" onClick={isMobileMenuOpen ? toggleMobileMenu : undefined}>Type Test</Link></li>
+        <li><Link to="/image-interaction" onClick={isMobileMenuOpen ? toggleMobileMenu : undefined}>Image Fun</Link></li>
+        <li className="dropdown" ref={dropdownRef}>
           <button onClick={toggleDropdown} className="dropdown-toggle" aria-expanded={isDropdownOpen} aria-haspopup="true">
             More
           </button>
-          <ul className={`dropdown-menu ${isDropdownOpen ? 'open' : ''}`} ref={dropdownMenuRef}> {/* Attach ref to ul.dropdown-menu */}
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="#faq">FAQ</a></li>
+          <ul className={`dropdown-menu ${isDropdownOpen ? 'open' : ''}`} ref={dropdownMenuRef}>
+            <li><a href="#about" onClick={() => { if (isMobileMenuOpen) toggleMobileMenu(); setIsDropdownOpen(false);}}>About Us</a></li>
+            <li><a href="#contact" onClick={() => { if (isMobileMenuOpen) toggleMobileMenu(); setIsDropdownOpen(false);}}>Contact</a></li>
+            <li><a href="#faq" onClick={() => { if (isMobileMenuOpen) toggleMobileMenu(); setIsDropdownOpen(false);}}>FAQ</a></li>
           </ul>
         </li>
       </ul>

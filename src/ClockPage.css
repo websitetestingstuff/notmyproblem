@@ -86,14 +86,14 @@ md-outlined-select {
   --md-outlined-field-input-text-color: white; /* Input text color */
   
   /* Font for various parts of the select */
-  /* Use inherit or unset if MWC components correctly inherit the body font. */
-  /* If not, explicitly set to 'inherit' or a specific font variable if created. */
-  --md-outlined-field-label-text-font: inherit;
-  --md-outlined-field-input-text-font: inherit;
-  --md-select-option-label-text-font: inherit;
+  --md-outlined-field-label-text-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --md-outlined-field-input-text-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  /* --md-select-option-label-text-font is for the visual appearance of options in the closed select, if different from input text.
+     Let's set it for consistency, though the menu item font is more critical for the dropdown list. */
+  --md-select-option-label-text-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 
   /* Explicitly theme the menu using its custom property for background */
-  --md-menu-container-color: rgba(20, 20, 20, 0.75); /* Dark, semi-transparent for the menu background */
+  --md-menu-container-color: rgba(20, 20, 20, 0.5); /* Dark, MORE semi-transparent for the menu background (alpha 0.75 to 0.5) */
 }
 
 /* Styling the dropdown menu (panel) for backdrop filter and font */
@@ -110,7 +110,7 @@ md-select-option {
   --md-menu-item-label-text-color: #f0f0f0; /* Light gray text for options for better readability */
   /* Ensure option background is transparent so the menu's blurred background is visible */
   --md-menu-item-container-color: transparent; 
-  /* font-family should be inherited */
+  --md-menu-item-label-text-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }
 
 /* Hover and selected states for options */
