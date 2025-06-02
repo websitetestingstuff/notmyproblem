@@ -58,13 +58,22 @@
 
 /* Styling for md-switch (if needed, MWC components are often themeable via CSS custom properties) */
 md-switch {
-  /* Example: Change colors if default M3 doesn't fit
-  --md-switch-selected-track-color: #61dafb;
-  --md-switch-selected-handle-color: white;
-  --md-switch-unselected-track-color: #555;
-  --md-switch-unselected-handle-color: #ccc;
-  */
-  /* The component should size itself appropriately. */
+  /* Target the track and outline colors */
+  --md-switch-selected-track-color: black;
+  --md-switch-unselected-track-color: black;
+  --md-switch-selected-track-outline-color: black;
+  --md-switch-unselected-track-outline-color: black;
+
+  /* Ensure handle provides good contrast, defaults are usually okay (e.g., white for selected) */
+  /* --md-switch-selected-handle-color: white; */
+  /* --md-switch-unselected-handle-color: #bdbdbd; /* default is #757575 on light, #BDBDBD on dark */
+  /* --md-switch-selected-focus-handle-color: white; */
+  /* --md-switch-selected-hover-handle-color: white; */
+  /* --md-switch-selected-pressed-handle-color: white; */
+
+  /* Ensure icons (if any) also have good contrast if they are part of the handle */
+  /* --md-switch-selected-icon-color: black; /* If handle is white */
+  /* --md-switch-unselected-icon-color: white; /* If handle is grey and track is black */
 }
 
 /* Styling for md-outlined-select */
@@ -90,8 +99,8 @@ md-outlined-select {
 /* Styling the dropdown menu (panel) for backdrop filter and font */
 /* Apply backdrop-filter directly to the menu part. */
 md-outlined-select::part(menu) { 
-  backdrop-filter: blur(8px); /* Slightly stronger blur */
-  -webkit-backdrop-filter: blur(8px); /* Safari support */
+  backdrop-filter: blur(15px); /* Increased blur */
+  -webkit-backdrop-filter: blur(15px); /* Safari support, increased blur */
   /* The background color is now set by --md-menu-container-color on the host md-outlined-select */
   /* Ensure default component styles don't add another opaque background here */
 }

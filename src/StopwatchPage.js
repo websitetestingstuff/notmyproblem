@@ -30,7 +30,16 @@ const StopwatchPage = () => {
 
   const handleLap = () => {
     if (isRunning) {
-      setLaps([...laps, time]);
+      let lapDifference;
+      if (laps.length === 0) {
+        lapDifference = time; // First lap's difference is from time 0
+      } else {
+        // Ensure the previous lap's time is accessed correctly from the object
+        const previousLapTime = laps[laps.length - 1].lapTime;
+        lapDifference = time - previousLapTime;
+      }
+      const newLap = { lapTime: time, lapDifference: lapDifference };
+      setLaps(prevLaps => [...prevLaps, newLap]);
     }
   };
 
@@ -54,7 +63,9 @@ const StopwatchPage = () => {
         <h2>Laps</h2>
         <ul>
           {laps.map((lap, index) => (
-            <li key={index}>{formatTime(lap)}</li>
+            <li key={index}>
+              Lap {index + 1}: {formatTime(lap.lapTime)} (+{formatTime(lap.lapDifference)})
+            </li>
           ))}
         </ul>
       </div>

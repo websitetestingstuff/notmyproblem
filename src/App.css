@@ -51,6 +51,93 @@ code {
   margin-bottom: 1rem;
 }
 
+/* Styles for other headings */
+.main-content h2 {
+  font-size: 2rem;
+  color: #efefef;
+  margin-top: 2rem; /* Increased top margin for H2 */
+  margin-bottom: 0.8rem;
+  border-bottom: 1px solid #333;
+  padding-bottom: 0.4rem;
+}
+
+.main-content h3 {
+  font-size: 1.75rem;
+  color: #dddddd;
+  margin-top: 1.5rem; /* Increased top margin for H3 */
+  margin-bottom: 0.6rem;
+}
+
+.main-content h4 {
+  font-size: 1.5rem;
+  color: #cccccc;
+  margin-top: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.main-content h5 {
+  font-size: 1.25rem;
+  color: #bbbbbb;
+  margin-top: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+.main-content h6 {
+  font-size: 1rem;
+  color: #aaaaaa;
+  margin-top: 0.8rem;
+  margin-bottom: 0.3rem;
+  font-weight: bold; /* H6 is often same size as p, so make it bold */
+}
+
+/* Styles for images */
+.main-content img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  display: block; /* Default, but can be overridden by inline styles in JS for layout */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Subtle shadow for images */
+}
+
+/* Styles for blockquotes */
+.main-content blockquote {
+  margin-left: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+  border-left: 4px solid #555;
+  color: #aaa;
+  font-style: italic;
+  background-color: #1a1a1a; /* Slightly different background for blockquote */
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-radius: 0 4px 4px 0; /* Rounded corners on the right side */
+}
+
+/* Styles for lists */
+.main-content ul, .main-content ol {
+  margin-left: 2rem; /* Indent lists */
+  margin-bottom: 1rem;
+  padding-left: 1.5rem; /* Add padding for list markers */
+  color: #ccc; /* Match paragraph color */
+}
+
+.main-content li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6; /* Ensure list items have good line height */
+}
+
+/* Styles for horizontal rule */
+.main-content hr {
+  border: 0;
+  height: 1px;
+  background-color: #444; /* Match h1 border color */
+  margin: 2rem 0; /* Add some vertical spacing */
+}
+
+
 /* Remove or adjust default React boilerplate styles if no longer needed */
 /* For example, .App-header, .App-link might not be used anymore */
 

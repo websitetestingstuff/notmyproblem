@@ -10,6 +10,43 @@
   min-height: calc(100vh - 160px); /* Approximate height considering navbar and footer */
 }
 
+/* Styles for the editable sample text area */
+.sample-text-editor {
+  width: 80%;
+  max-width: 700px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.sample-text-editor label {
+  font-size: 0.9rem;
+  color: #bbb;
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+.sample-text-edit-area {
+  width: 100%; /* Take full width of its container */
+  min-height: 80px;
+  padding: 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 6px;
+  border: 1px solid #444; /* Different border */
+  background-color: #252525; /* Slightly different background */
+  color: #ddd;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  font-family: 'Arial', sans-serif; /* Different font for distinction */
+}
+
+.sample-text-edit-area:focus {
+  outline: none;
+  border-color: #76c7c0; /* A different accent color on focus */
+  box-shadow: 0 0 6px rgba(118, 199, 192, 0.3);
+}
+
+
 .typetest-container h1 {
   font-size: 2rem;
   margin-bottom: 1.5rem;
@@ -41,8 +78,8 @@
   text-decoration: underline; /* Underline incorrect characters */
 }
 
-
-.typetest-container textarea {
+/* Renaming .typetest-container textarea to .typing-area for specificity */
+.typing-area {
   width: 80%;
   max-width: 700px; /* Match sample text display width */
   min-height: 150px;
@@ -58,11 +95,67 @@
   font-family: 'Courier New', Courier, monospace; /* Monospace for better typing experience */
 }
 
-.typetest-container textarea:focus {
+.typing-area:focus {
   outline: none;
   border-color: #61dafb; /* Accent color on focus */
   box-shadow: 0 0 8px rgba(97, 218, 251, 0.3);
 }
+
+/* Keyboard Styling */
+.keyboard {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: #2c2c2c; /* Slightly lighter than text areas for distinction */
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+  width: 80%;
+  max-width: 700px; /* Consistent width */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center rows if they have different widths */
+}
+
+.keyboard-row {
+  display: flex;
+  justify-content: center; /* Center keys within a row */
+  margin-bottom: 0.5rem; /* Space between rows */
+}
+
+.keyboard-row:last-child {
+  margin-bottom: 0;
+}
+
+.keyboard-key {
+  padding: 0.75rem 1rem;
+  margin: 0.25rem;
+  background-color: #4f4f4f; /* Key background */
+  color: #f0f0f0; /* Key text color */
+  border: 1px solid #3a3a3a;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  min-width: 40px; /* Minimum width for keys */
+  height: 40px; /* Fixed height for keys */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  transition: background-color 0.1s ease, transform 0.1s ease;
+  user-select: none; /* Prevent text selection on keys */
+}
+
+.keyboard-key.spacebar {
+  width: 200px; /* Wider spacebar */
+  /*letter-spacing: 5px; Optional: if you want to display "SPACE" text */
+}
+
+.keyboard-key.active-key {
+  background-color: #61dafb; /* Active key highlight color (site accent) */
+  color: #282c34; /* Text color for active key */
+  transform: scale(0.95); /* Slight press effect */
+  border-color: #21a1f1;
+}
+
 
 .results-display {
   margin-top: 1rem;

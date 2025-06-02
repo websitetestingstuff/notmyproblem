@@ -55,7 +55,9 @@ function Navbar() {
 
   return (
     <nav className="navbar">
-      <div className="navbar-logo">websiet</div>
+      <div className="navbar-logo">
+        <Link to="/">websiet</Link>
+      </div>
       <ul className="navbar-links">
         <li><Link to="/">Home</Link></li>
         <li><Link to="/clock">Clock</Link></li>

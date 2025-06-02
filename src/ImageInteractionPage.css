@@ -1,0 +1,80 @@
+.image-interaction-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  width: 100%;
+  min-height: calc(100vh - 160px); /* Assuming navbar and footer height, similar to other pages */
+  box-sizing: border-box;
+  color: white; /* Default text color for the page */
+  text-align: center; /* Center page title and input */
+}
+
+.image-interaction-container h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #61dafb; /* Accent color for heading */
+}
+
+.page-description {
+  font-size: 1rem;
+  color: #ccc;
+  margin-bottom: 1.5rem;
+  max-width: 600px;
+}
+
+.image-upload-input {
+  margin-bottom: 1.5rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #444;
+  background-color: #2a2a2a;
+  color: white;
+}
+
+.image-display-area {
+  position: relative; /* For absolute positioning of the blur box */
+  width: 80vw; /* 80% of the viewport width */
+  height: 70vh; /* 70% of the viewport height, adjust as needed */
+  max-width: 800px; /* Max width to prevent it from becoming too large on wide screens */
+  max-height: 600px; /* Max height */
+  margin: auto; /* Center the display area */
+  border: 2px dashed #444; /* Border to visualize the area */
+  background-color: #1e1e1e; /* Background for the area if image is smaller or not loaded */
+  overflow: hidden; /* Crucial to contain the image and the blur box if it's moved to edges */
+  display: flex; /* To center the image if object-fit is contain */
+  justify-content: center; /* To center the image if object-fit is contain */
+  align-items: center; /* To center the image if object-fit is contain */
+}
+
+.image-display-area img {
+  display: block; /* Remove extra space below image */
+  max-width: 100%; /* Responsive image, ensures it doesn't overflow its parent */
+  max-height: 100%; /* Responsive image */
+  object-fit: contain; /* Or 'cover', 'scale-down' depending on desired behavior */
+  user-select: none; /* Prevent image selection during drag attempts */
+  -webkit-user-drag: none; /* Prevent image dragging in Safari/Chrome */
+}
+
+.blur-box {
+  position: absolute;
+  width: 150px; /* Fixed width for simplicity */
+  height: 150px; /* Fixed height for simplicity */
+  cursor: grab;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* For Safari */
+  background-color: rgba(200, 200, 200, 0.3); /* Semi-transparent background to see the blur */
+  border: 1px solid rgba(255, 255, 255, 0.5); /* Light border for visibility */
+  box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Optional shadow for better visibility */
+  user-select: none; /* Prevent text selection inside the box if any content were there */
+}
+
+.blur-box:active {
+  cursor: grabbing;
+}
+
+.upload-prompt {
+  margin-top: 2rem;
+  font-size: 1.1rem;
+  color: #888;
+}
