@@ -45,7 +45,7 @@ function HomePage() {
       <h2>Sample Images</h2>
       <p>Below are some placeholder images:</p>
       <img src="https://via.placeholder.com/728x150.png?text=Large+Banner+Image" alt="Large Placeholder Banner" />
-      <img src="https://via.placeholder.com/300x200.png?text=Medium+Image" alt="Medium Placeholder Image" style={{ marginTop: '1rem', marginRight: '1rem', display: 'inline-block' }} />
+      <img src="https://via.placeholder.com/300x200.png?text=Medium+Image" alt="Medium Placeholder" style={{ marginTop: '1rem', marginRight: '1rem', display: 'inline-block' }} />
       <img src="https://via.placeholder.com/300x200.png?text=Another+Medium+Image" alt="Another Medium Placeholder" style={{ marginTop: '1rem', display: 'inline-block' }} />
 
       <h5>Sub-heading Level 5</h5>
