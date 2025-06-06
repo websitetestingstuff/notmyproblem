@@ -1,0 +1,7 @@
+.asar-extractor-page {
+  padding: 20px;
+}
+
+.asar-extractor-page input[type="file"] {
+  margin-right: 10px;
+}
