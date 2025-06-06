@@ -30,12 +30,12 @@ const AsarExtractorPage = () => {
         // const pickleSize = view.getUint32(0, true);
         // console.log('Pickle Size:', pickleSize);
 
-        // The next 4 bytes (offset 4) give the size of the JSON header.
-        const jsonHeaderSize = view.getUint32(4, true);
+        // The first 4 bytes (offset 0) give the size of the JSON header.
+        const jsonHeaderSize = view.getUint32(0, true); // NEW: Read size from offset 0
         console.log('JSON Header Size:', jsonHeaderSize);
 
-        // The JSON header string starts at offset 8.
-        const headerBuffer = buffer.slice(8, 8 + jsonHeaderSize);
+        // The JSON header string starts at offset 4.
+        const headerBuffer = buffer.slice(4, 4 + jsonHeaderSize); // NEW: Slice from offset 4
         const headerString = new TextDecoder('utf-8').decode(headerBuffer);
         console.log("ASAR Header JSON:", headerString);
 
