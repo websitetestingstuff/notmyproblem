@@ -30,14 +30,27 @@ const AsarExtractorPage = () => {
         // const pickleSize = view.getUint32(0, true);
         // console.log('Pickle Size:', pickleSize);
 
-        // The first 4 bytes (offset 0) give the size of the JSON header.
-        const jsonHeaderSize = view.getUint32(0, true); // NEW: Read size from offset 0
+        // The next 4 bytes (offset 4) give the size of the JSON header.
+        const jsonHeaderSize = view.getUint32(4, true);
         console.log('JSON Header Size:', jsonHeaderSize);
 
-        // The JSON header string starts at offset 4.
-        const headerBuffer = buffer.slice(4, 4 + jsonHeaderSize); // NEW: Slice from offset 4
-        const headerString = new TextDecoder('utf-8').decode(headerBuffer);
-        console.log("ASAR Header JSON:", headerString);
+        // The JSON header string starts at offset 8.
+        const headerBuffer = buffer.slice(8, 8 + jsonHeaderSize);
+        let headerString = new TextDecoder('utf-8').decode(headerBuffer);
+        // console.log("Raw ASAR Header String:", headerString); // Optional: log raw string before trimming
+
+        const jsonStartIndex = headerString.indexOf('{');
+        if (jsonStartIndex === -1) {
+          throw new Error("ASAR header JSON does not contain '{'.");
+        }
+        // Only substring if '{' is not the first character.
+        // If jsonStartIndex is 0, substring would be redundant.
+        // If jsonStartIndex > 0, it means there's leading garbage.
+        if (jsonStartIndex > 0) {
+          console.log(`Trimming ${jsonStartIndex} characters from the start of the ASAR header string.`);
+          headerString = headerString.substring(jsonStartIndex);
+        }
+        console.log("Cleaned ASAR Header JSON:", headerString);
 
         const headerJson = JSON.parse(headerString);
 
