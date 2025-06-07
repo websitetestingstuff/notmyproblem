@@ -8,6 +8,11 @@ const AsarExtractorPage = () => {
   const [asarBuffer, setAsarBuffer] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [isDarkMode, setIsDarkMode] = useState(false); // Default to light mode
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(prevMode => !prevMode);
+  };
 
   const handleFileChange = (event) => {
     setFileTree(null);
@@ -189,7 +194,12 @@ const AsarExtractorPage = () => {
   };
 
   return (
-    <div className="asar-extractor-page">
+    <div className={`asar-extractor-page ${isDarkMode ? 'dark-mode' : ''}`}>
+      <div style={{ marginBottom: '10px', display: 'flex', justifyContent: 'flex-end' }}>
+        <button onClick={toggleDarkMode} className="theme-toggle-button">
+          {isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+        </button>
+      </div>
       {isLoading && <p className="loading-message">Processing ASAR file...</p>}
       {errorMessage && <p className="error-message">{errorMessage}</p>}
       <div className="controls">

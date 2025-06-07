@@ -2,6 +2,7 @@
   margin-left: 20px; /* Default indentation for all nodes */
   padding: 3px;
   font-family: monospace; /* Good for file trees */
+  color: var(--asar-text-color); /* Inherit text color */
 }
 
 .file-tree-node .node-content { /* A new wrapper for the content of the node itself */
@@ -12,14 +13,16 @@
 
 .file-tree-children {
   /* No extra margin needed here if .file-tree-node handles all indentation */
-  border-left: 1px solid #ccc; /* Visual cue for nesting under a parent */
+  border-left: 1px solid var(--asar-border-color); /* Visual cue for nesting under a parent */
   padding-left: 0; /* Reset padding if margin on node is enough */
   margin-left: 10px; /* Additional indent for children relative to parent's icon/button */
 }
 
 .expand-button {
-  background: none;
-  border: 1px solid #ddd;
+  /* background: var(--asar-page-bg); */ /* Old value */
+  background-color: var(--asar-button-subtle-bg, var(--asar-page-bg)); /* Fallback to page-bg */
+  border: 1px solid var(--asar-border-color);
+  color: var(--asar-text-color);
   cursor: pointer;
   width: 20px;
   height: 20px;
@@ -30,6 +33,11 @@
   margin-right: 5px; /* Space between button and icon */
 }
 
+.expand-button:hover {
+  border-color: var(--asar-accent-color); /* Highlight on hover */
+  background-color: var(--asar-tree-bg); /* Example: Use tree bg on hover for slight change */
+}
+
 .icon { /* Common style for icons */
   display: inline-block;
   width: 20px; /* Fixed width for alignment */
@@ -38,11 +46,11 @@
 }
 
 .icon-directory {
-  color: #007bff; /* Blue for directories */
+  color: var(--asar-accent-color); /* Blue for directories */
 }
 
 .icon-file {
-  color: #28a745; /* Green for files */
+  color: var(--asar-success-text-color); /* Green for files */
 }
 
 .node-name {
@@ -52,7 +60,7 @@
 .node-size {
   margin-left: 10px;
   font-size: 0.9em;
-  color: #666;
+  color: var(--asar-muted-text-color);
 }
 
 .download-button {
@@ -60,13 +68,13 @@
   padding: 2px 8px;
   font-size: 0.9em;
   cursor: pointer;
-  border: 1px solid #007bff;
-  background-color: #007bff;
-  color: white;
+  border: 1px solid var(--asar-accent-color);
+  background-color: var(--asar-accent-color);
+  color: var(--asar-button-text-color);
   border-radius: 3px;
 }
 
 .download-button:hover {
-  background-color: #0056b3;
-  border-color: #0056b3;
+  background-color: var(--asar-accent-color-hover);
+  border-color: var(--asar-accent-color-hover);
 }

@@ -22,7 +22,7 @@ const FileTreeNode = ({ node, onDownloadFile }) => {
           </button>
         )}
         <span className={`icon icon-${node.type}`}>
-          {node.type === 'directory' ? '[D]' : '[F]'}
+          {node.type === 'directory' ? '📁' : '📄'}
         </span>
         <span className="node-name">{node.name}</span>
         {node.type === 'file' && (
