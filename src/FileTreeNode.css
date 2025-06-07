@@ -1,0 +1,72 @@
+.file-tree-node {
+  margin-left: 20px; /* Default indentation for all nodes */
+  padding: 3px;
+  font-family: monospace; /* Good for file trees */
+}
+
+.file-tree-node .node-content { /* A new wrapper for the content of the node itself */
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Space between elements in a node line */
+}
+
+.file-tree-children {
+  /* No extra margin needed here if .file-tree-node handles all indentation */
+  border-left: 1px solid #ccc; /* Visual cue for nesting under a parent */
+  padding-left: 0; /* Reset padding if margin on node is enough */
+  margin-left: 10px; /* Additional indent for children relative to parent's icon/button */
+}
+
+.expand-button {
+  background: none;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+  line-height: 18px; /* Adjust for vertical centering */
+  text-align: center;
+  padding: 0;
+  margin-right: 5px; /* Space between button and icon */
+}
+
+.icon { /* Common style for icons */
+  display: inline-block;
+  width: 20px; /* Fixed width for alignment */
+  text-align: center;
+  font-weight: bold;
+}
+
+.icon-directory {
+  color: #007bff; /* Blue for directories */
+}
+
+.icon-file {
+  color: #28a745; /* Green for files */
+}
+
+.node-name {
+  cursor: default; /* Default cursor for names */
+}
+
+.node-size {
+  margin-left: 10px;
+  font-size: 0.9em;
+  color: #666;
+}
+
+.download-button {
+  margin-left: 10px;
+  padding: 2px 8px;
+  font-size: 0.9em;
+  cursor: pointer;
+  border: 1px solid #007bff;
+  background-color: #007bff;
+  color: white;
+  border-radius: 3px;
+}
+
+.download-button:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}

@@ -1,7 +1,60 @@
 .asar-extractor-page {
   padding: 20px;
+  font-family: sans-serif;
+}
+
+.asar-extractor-page .controls { /* Wrapper for input and button */
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .asar-extractor-page input[type="file"] {
-  margin-right: 10px;
+  /* Basic styling, browser default is often fine */
+}
+
+.asar-extractor-page button.extract-button {
+  padding: 8px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.asar-extractor-page button.extract-button:hover {
+  background-color: #0056b3;
+}
+
+.loading-message {
+  margin-top: 15px;
+  margin-bottom: 15px; /* Ensure spacing from controls if error also appears */
+  color: #007bff;
+  font-style: italic;
+}
+
+.error-message {
+  margin-top: 15px;
+  margin-bottom: 15px; /* Ensure spacing from controls */
+  color: red;
+  font-weight: bold;
+  border: 1px solid red;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #ffebeb;
+}
+
+.file-tree-container {
+  margin-top: 20px;
+  border: 1px solid #eee;
+  padding: 15px;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+
+.file-tree-container h3 { /* Style for the "ASAR Content" title */
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #333;
 }
