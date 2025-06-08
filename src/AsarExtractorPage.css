@@ -62,18 +62,50 @@
   color: var(--asar-text-color);
 }
 
-.theme-toggle-button {
-  padding: 8px 12px;
-  border: 1px solid var(--asar-border-color);
-  background-color: var(--asar-page-bg); /* Use page bg for less emphasis */
-  color: var(--asar-text-color);
-  cursor: pointer;
+.custom-file-select-button {
+  padding: 8px 15px;
+  background-color: var(--asar-accent-color); /* Use existing accent color */
+  color: var(--asar-button-text-color);
+  border: 1px solid var(--asar-accent-color); /* Add border for consistency */
   border-radius: 4px;
-  /* Add a little margin if placed near other controls */
-  /* margin-left: 10px; /* If next to other buttons */
+  cursor: pointer;
+  font-family: inherit; /* Ensure font matches rest of page */
 }
 
-.theme-toggle-button:hover {
-  /* Basic hover, can be improved */
-  border-color: var(--asar-accent-color);
+.custom-file-select-button:hover {
+  background-color: var(--asar-accent-color-hover);
+  border-color: var(--asar-accent-color-hover);
+}
+
+.custom-file-select-button:disabled { /* Style for disabled state */
+  background-color: var(--asar-muted-text-color); /* Example disabled color */
+  border-color: var(--asar-muted-text-color);
+  cursor: not-allowed;
+}
+
+.selected-file-name {
+  margin-left: 10px; /* Space between button and file name */
+  color: var(--asar-text-color);
+  font-size: 0.9em;
+}
+
+.download-zip-button {
+  padding: 8px 15px;
+  background-color: var(--asar-success-text-color); /* Using success color for variety */
+  color: var(--asar-button-text-color);
+  border: 1px solid var(--asar-success-text-color);
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.download-zip-button:hover {
+  opacity: 0.8; /* Simpler hover effect */
+}
+
+.download-zip-button:disabled {
+  background-color: var(--asar-muted-text-color);
+  border-color: var(--asar-muted-text-color);
+  cursor: not-allowed;
+  opacity: 0.7;
 }

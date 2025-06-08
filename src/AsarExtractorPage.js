@@ -1,18 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react'; // Import useRef
+import JSZip from 'jszip'; // Import JSZip
 import './AsarExtractorPage.css';
 import FileTreeNode from './FileTreeNode'; // Import FileTreeNode
 
 const AsarExtractorPage = () => {
+  const fileInputRef = useRef(null); // Create a ref for the file input
   const [selectedFile, setSelectedFile] = useState(null);
   const [fileTree, setFileTree] = useState(null);
   const [asarBuffer, setAsarBuffer] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isZipping, setIsZipping] = useState(false); // New state for zipping
   const [errorMessage, setErrorMessage] = useState('');
-  const [isDarkMode, setIsDarkMode] = useState(false); // Default to light mode
-
-  const toggleDarkMode = () => {
-    setIsDarkMode(prevMode => !prevMode);
-  };
 
   const handleFileChange = (event) => {
     setFileTree(null);
@@ -193,22 +191,106 @@ const AsarExtractorPage = () => {
     console.log(`Download requested for: ${filePath}, Offset: ${offset}, Size: ${size}`);
   };
 
+  const handleDownloadAllAsZip = async () => {
+    if (!fileTree || !asarBuffer) {
+      setErrorMessage('No ASAR content loaded to zip.');
+      return;
+    }
+    setIsZipping(true);
+    setErrorMessage(''); // Clear previous errors
+
+    const zip = new JSZip();
+
+    const getLocalHeaderInfo = (buffer) => {
+      const view = new DataView(buffer);
+      // const pickleSize = view.getUint32(0, true); // Not directly used for offset calculation here
+      const actualJsonHeaderSize = view.getUint32(4, true);
+      return { jsonHeaderSize: actualJsonHeaderSize };
+    };
+    const headerInfo = getLocalHeaderInfo(asarBuffer);
+    const dataBlockOffset = 8 + headerInfo.jsonHeaderSize;
+
+    const addNodeToZip = (node, currentZipFolder) => {
+      if (node.type === 'directory') {
+        const folder = currentZipFolder.folder(node.name);
+        if (node.children) {
+          for (const child of node.children) {
+            addNodeToZip(child, folder);
+          }
+        }
+      } else if (node.type === 'file') {
+        if (typeof node.offset === 'undefined' || typeof node.size === 'undefined') {
+            console.warn(`Skipping file ${node.path} due to missing offset or size.`);
+            return;
+        }
+        const fileDataStart = dataBlockOffset + parseInt(node.offset, 10);
+        const fileContent = asarBuffer.slice(fileDataStart, fileDataStart + node.size);
+        currentZipFolder.file(node.name, fileContent, { binary: true });
+      }
+    };
+
+    try {
+      if (fileTree.children) {
+        for (const childNode of fileTree.children) {
+          addNodeToZip(childNode, zip);
+        }
+      }
+
+      const zipBlob = await zip.generateAsync({ type: "blob" });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(zipBlob);
+      link.download = (selectedFile ? selectedFile.name.replace(/\.asar$/, '') : 'asar_archive') + '.zip';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(link.href);
+
+    } catch (error) {
+      console.error("Error creating ZIP:", error);
+      setErrorMessage('Failed to create ZIP file.');
+    } finally {
+      setIsZipping(false);
+    }
+  };
+
   return (
-    <div className={`asar-extractor-page ${isDarkMode ? 'dark-mode' : ''}`}>
-      <div style={{ marginBottom: '10px', display: 'flex', justifyContent: 'flex-end' }}>
-        <button onClick={toggleDarkMode} className="theme-toggle-button">
-          {isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
-        </button>
-      </div>
+    <div className="asar-extractor-page dark-mode">
       {isLoading && <p className="loading-message">Processing ASAR file...</p>}
+      {isZipping && <p className="loading-message">Zipping files...</p>} {/* Zipping message */}
       {errorMessage && <p className="error-message">{errorMessage}</p>}
       <div className="controls">
-        <input type="file" accept=".asar" onChange={handleFileChange} disabled={isLoading} />
-        <button onClick={extractAsar} className="extract-button" disabled={isLoading}>
+        <input
+          type="file"
+          accept=".asar"
+          onChange={handleFileChange}
+          ref={fileInputRef}
+          style={{ display: 'none' }} // Visually hide the default input
+          disabled={isLoading || isZipping}
+        />
+        <button
+          onClick={() => fileInputRef.current && fileInputRef.current.click()}
+          className="custom-file-select-button"
+          disabled={isLoading || isZipping}
+        >
+          Select ASAR File
+        </button>
+        {selectedFile && <span className="selected-file-name">{selectedFile.name}</span>}
+        <button
+          onClick={extractAsar}
+          className="extract-button"
+          disabled={isLoading || isZipping || !selectedFile}
+        >
           {isLoading ? 'Processing...' : 'Extract Info'}
         </button>
+        <button
+          onClick={handleDownloadAllAsZip}
+          className="download-zip-button"
+          disabled={isLoading || isZipping || !fileTree || !asarBuffer}
+        >
+          {isZipping ? 'Zipping...' : 'Download All as ZIP'}
+        </button>
       </div>
-      {fileTree && !isLoading && !errorMessage && (
+      {fileTree && !isLoading && !isZipping && !errorMessage && (
         <div className="file-tree-container">
           <h3>{selectedFile ? selectedFile.name : 'ASAR Content'}</h3>
           <FileTreeNode node={fileTree} onDownloadFile={handleDownloadFile} />
