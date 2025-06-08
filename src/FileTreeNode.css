@@ -39,10 +39,13 @@
 }
 
 .icon { /* Common style for icons */
-  display: inline-block;
-  width: 20px; /* Fixed width for alignment */
-  text-align: center;
-  font-weight: bold;
+  display: inline-block; /* Keeps it inline but allows width/height */
+  width: 20px;
+  height: 20px; /* Ensure height is also set */
+  line-height: 1; /* Prevent extra space if it was affecting alignment */
+  vertical-align: middle; /* Align SVG nicely with adjacent text */
+  /* font-weight: bold; Not needed for SVG */
+  /* text-align: center; Not needed for SVG that fills its span */
 }
 
 .icon-directory {
