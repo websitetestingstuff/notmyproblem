@@ -1,0 +1,111 @@
+.asar-extractor-page {
+  padding: 20px;
+  font-family: sans-serif;
+  background-color: var(--asar-page-bg);
+  color: var(--asar-text-color);
+}
+
+.asar-extractor-page .controls { /* Wrapper for input and button */
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.asar-extractor-page input[type="file"] {
+  /* Basic styling, browser default is often fine */
+  /* Consider theming if needed: color: var(--asar-text-color); */
+}
+
+.asar-extractor-page button.extract-button {
+  padding: 8px 15px;
+  background-color: var(--asar-accent-color);
+  color: var(--asar-button-text-color);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.asar-extractor-page button.extract-button:hover {
+  background-color: var(--asar-accent-color-hover);
+}
+
+.loading-message {
+  margin-top: 15px;
+  margin-bottom: 15px; /* Ensure spacing from controls if error also appears */
+  color: var(--asar-accent-color);
+  font-style: italic;
+}
+
+.error-message {
+  margin-top: 15px;
+  margin-bottom: 15px; /* Ensure spacing from controls */
+  color: var(--asar-error-text-color);
+  font-weight: bold;
+  border: 1px solid var(--asar-error-border-color);
+  padding: 10px;
+  border-radius: 4px;
+  background-color: var(--asar-error-bg-color);
+}
+
+.file-tree-container {
+  margin-top: 20px;
+  border: 1px solid var(--asar-tree-border-color);
+  padding: 15px;
+  border-radius: 4px;
+  background-color: var(--asar-tree-bg);
+}
+
+.file-tree-container h3 { /* Style for the "ASAR Content" title */
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: var(--asar-text-color);
+}
+
+.custom-file-select-button {
+  padding: 8px 15px;
+  background-color: var(--asar-accent-color); /* Use existing accent color */
+  color: var(--asar-button-text-color);
+  border: 1px solid var(--asar-accent-color); /* Add border for consistency */
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit; /* Ensure font matches rest of page */
+}
+
+.custom-file-select-button:hover {
+  background-color: var(--asar-accent-color-hover);
+  border-color: var(--asar-accent-color-hover);
+}
+
+.custom-file-select-button:disabled { /* Style for disabled state */
+  background-color: var(--asar-muted-text-color); /* Example disabled color */
+  border-color: var(--asar-muted-text-color);
+  cursor: not-allowed;
+}
+
+.selected-file-name {
+  margin-left: 10px; /* Space between button and file name */
+  color: var(--asar-text-color);
+  font-size: 0.9em;
+}
+
+.download-zip-button {
+  padding: 8px 15px;
+  background-color: var(--asar-success-text-color); /* Using success color for variety */
+  color: var(--asar-button-text-color);
+  border: 1px solid var(--asar-success-text-color);
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.download-zip-button:hover {
+  opacity: 0.8; /* Simpler hover effect */
+}
+
+.download-zip-button:disabled {
+  background-color: var(--asar-muted-text-color);
+  border-color: var(--asar-muted-text-color);
+  cursor: not-allowed;
+  opacity: 0.7;
+}

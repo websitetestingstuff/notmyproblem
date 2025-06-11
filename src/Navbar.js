@@ -64,6 +64,7 @@ function Navbar() {
         <li><Link to="/calculator">Calculator</Link></li>
         <li><Link to="/stopwatch">Stopwatch</Link></li> {/* Add Stopwatch link */}
         <li><Link to="/typetest">Type Test</Link></li> {/* Add TypeTest link */}
+        <li><Link to="/asar-extractor">ASAR Extractor</Link></li>
         <li className="dropdown" ref={dropdownRef}> {/* Attach ref to li.dropdown */}
           <button onClick={toggleDropdown} className="dropdown-toggle" aria-expanded={isDropdownOpen} aria-haspopup="true">
             More

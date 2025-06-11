@@ -1,3 +1,37 @@
+:root {
+  --asar-page-bg: #ffffff;
+  --asar-text-color: #212529;
+  --asar-muted-text-color: #6c757d;
+  --asar-border-color: #dee2e6;
+  --asar-accent-color: #007bff;
+  --asar-accent-color-hover: #0056b3;
+  --asar-error-text-color: #dc3545;
+  --asar-error-bg-color: #f8d7da;
+  --asar-error-border-color: #f5c6cb;
+  --asar-success-text-color: #28a745; /* For file icon */
+  --asar-tree-bg: #f9f9f9;
+  --asar-tree-border-color: #eeeeee;
+  --asar-button-text-color: #ffffff;
+  --asar-button-subtle-bg: #f0f0f0;
+}
+
+.dark-mode { /* This class will be applied on AsarExtractorPage's main div */
+  --asar-page-bg: #22272e; /* Darker background */
+  --asar-text-color: #c9d1d9; /* Light text for dark mode */
+  --asar-muted-text-color: #8b949e;
+  --asar-border-color: #444c56;
+  --asar-accent-color: #2f81f7; /* Slightly different blue for dark mode if needed */
+  --asar-accent-color-hover: #1f6feb;
+  --asar-error-text-color: #f85149;
+  --asar-error-bg-color: #422027;
+  --asar-error-border-color: #5D2E36;
+  --asar-success-text-color: #3fb950;
+  --asar-tree-bg: #2d333b;
+  --asar-tree-border-color: #444c56;
+  --asar-button-text-color: #ffffff;
+  --asar-button-subtle-bg: #3a3a3a;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,12 +39,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: black;
-  color: white;
+  background-color: black; /* Global site background */
+  color: white; /* Global site text color */
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-  color: white;
+  color: white; /* Global site code color */
 }

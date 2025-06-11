@@ -1,0 +1,83 @@
+.file-tree-node {
+  margin-left: 20px; /* Default indentation for all nodes */
+  padding: 3px;
+  font-family: monospace; /* Good for file trees */
+  color: var(--asar-text-color); /* Inherit text color */
+}
+
+.file-tree-node .node-content { /* A new wrapper for the content of the node itself */
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Space between elements in a node line */
+}
+
+.file-tree-children {
+  /* No extra margin needed here if .file-tree-node handles all indentation */
+  border-left: 1px solid var(--asar-border-color); /* Visual cue for nesting under a parent */
+  padding-left: 0; /* Reset padding if margin on node is enough */
+  margin-left: 10px; /* Additional indent for children relative to parent's icon/button */
+}
+
+.expand-button {
+  /* background: var(--asar-page-bg); */ /* Old value */
+  background-color: var(--asar-button-subtle-bg, var(--asar-page-bg)); /* Fallback to page-bg */
+  border: 1px solid var(--asar-border-color);
+  color: var(--asar-text-color);
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+  line-height: 18px; /* Adjust for vertical centering */
+  text-align: center;
+  padding: 0;
+  margin-right: 5px; /* Space between button and icon */
+}
+
+.expand-button:hover {
+  border-color: var(--asar-accent-color); /* Highlight on hover */
+  background-color: var(--asar-tree-bg); /* Example: Use tree bg on hover for slight change */
+}
+
+.icon { /* Common style for icons */
+  display: inline-block; /* Keeps it inline but allows width/height */
+  width: 20px;
+  height: 20px; /* Ensure height is also set */
+  line-height: 1; /* Prevent extra space if it was affecting alignment */
+  vertical-align: middle; /* Align SVG nicely with adjacent text */
+  /* font-weight: bold; Not needed for SVG */
+  /* text-align: center; Not needed for SVG that fills its span */
+}
+
+.icon-directory {
+  color: var(--asar-accent-color); /* Blue for directories */
+}
+
+.icon-file {
+  color: var(--asar-success-text-color); /* Green for files */
+}
+
+.node-name {
+  cursor: default; /* Default cursor for names */
+}
+
+.node-size {
+  margin-left: 10px;
+  font-size: 0.9em;
+  color: var(--asar-muted-text-color);
+}
+
+.download-button {
+  margin-left: 10px;
+  padding: 2px 8px;
+  font-size: 0.9em;
+  cursor: pointer;
+  border: 1px solid var(--asar-accent-color);
+  background-color: var(--asar-accent-color);
+  color: var(--asar-button-text-color);
+  border-radius: 3px;
+}
+
+.download-button:hover {
+  background-color: var(--asar-accent-color-hover);
+  border-color: var(--asar-accent-color-hover);
+}

@@ -8,6 +8,7 @@ import CalculatorPage from './CalculatorPage'; // Import CalculatorPage
 import StopwatchPage from './StopwatchPage'; // Import StopwatchPage
 import TypeTestPage from './TypeTestPage'; // Import TypeTestPage
 import ImageInteractionPage from './ImageInteractionPage'; // Import ImageInteractionPage
+import AsarExtractorPage from './AsarExtractorPage'; // Import AsarExtractorPage
 
 // Define HomePage component
 function HomePage() {
@@ -73,6 +74,7 @@ function App() {
             <Route path="/stopwatch" element={<StopwatchPage />} /> {/* Add StopwatchPage route */}
             <Route path="/typetest" element={<TypeTestPage />} /> {/* Add TypeTestPage route */}
             <Route path="/image-interaction" element={<ImageInteractionPage />} /> {/* Add ImageInteractionPage route */}
+            <Route path="/asar-extractor" element={<AsarExtractorPage />} /> {/* Add AsarExtractorPage route */}
           </Routes>
         </main>
         <Footer />
